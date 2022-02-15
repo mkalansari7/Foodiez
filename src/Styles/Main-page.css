@@ -1,0 +1,28 @@
+.main-page {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 15% 75% 10%;
+  /* grid-template-areas: ; */
+}
+
+@media (max-width: 992px) {
+  #sideNav ul {
+    width: 100vw;
+    margin-right: auto;
+  }
+  .ali {
+    display: flex;
+  }
+  .ali button {
+    position: absolute;
+    right: 15px;
+  }
+  .ali ul {
+    margin-top: 50px;
+  }
+  .main-page {
+    height: 90vh;
+    display: grid;
+    grid-template-rows: 15% 75% 10%;
+  }
+}
