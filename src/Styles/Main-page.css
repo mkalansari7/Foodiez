@@ -9,6 +9,23 @@
   #sideNav ul {
     width: 100vw;
     margin-right: auto;
+    text-align: center;
+  }
+  #logois {
+    position: absolute;
+    top: 15px;
+  }
+  #sideNav {
+    min-height: 9%;
+    text-align: center;
+  }
+  #navbarResponsive {
+    margin: 0px;
+  }
+  .ali li {
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
   }
   .ali {
     display: flex;
@@ -16,6 +33,7 @@
   .ali button {
     position: absolute;
     right: 15px;
+    top: 15px;
   }
   .ali ul {
     margin-top: 50px;
