@@ -1,5 +1,7 @@
 import React from "react";
 import "../Styles/NavbarStyle.css";
+import { NavLink, Link } from "react-router-dom";
+
 import bootstrap from "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js";
 const Navbar = () => {
   window.addEventListener("DOMContentLoaded", (event) => {
@@ -60,13 +62,13 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#about">
-                  About
+                <a class="nav-link js-scroll-trigger" href="/">
+                  Home
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#experience">
-                  Experience
+                <a class="nav-link js-scroll-trigger" href="/categories">
+                  All categories
                 </a>
               </li>
               <li class="nav-item">

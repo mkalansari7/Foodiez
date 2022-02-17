@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import "../Styles/Category.css";
-const Category = () => {
+const Home = () => {
   return (
     <div className="main-page">
       {/* header */}
@@ -22,4 +22,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Home;
