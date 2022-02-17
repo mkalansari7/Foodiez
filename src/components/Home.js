@@ -8,14 +8,19 @@ const Home = () => {
       <h2>What is your favorite cuiines?</h2>
       {/* content */}
       <div className="content">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Card name="hgg" image="./assets/img/logo.jpg" />
       </div>
       {/* footer */}
     </div>

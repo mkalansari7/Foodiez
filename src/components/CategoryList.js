@@ -1,27 +1,56 @@
-import React from "react";
+import { Link } from "react-router-dom";
+// import { AiOutlineUser } from "react-icons/ai";
+import React, { useState } from "react";
+
+import categoryStore from "../stores/categoryStore";
+import Card from "./Card";
+import AddCategoryModal from "./AddCategoryModal";
 
 const CategoryList = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => setIsOpen(false);
+  const handleOpen = () => setIsOpen(true);
+
   return (
-    <div>
-      <ul className="row">
-        {memberStore.members.map((member) => (
-          // <MemberItem key={member.id} member={member} />
-          <Link
-            key={member.id}
-            to={`/members/${member.slug}`}
-            className="col-lg-6 col-md-12"
-          >
-            <li className="card d-flex flex-row align-items-center">
-              <AiOutlineUser size={30} className="me-3" />
-              <p className="fs-4 m-0 text-nowrap overflow-hidden">
-                {member.firstName} {member.lastName}
-              </p>
-            </li>
-          </Link>
+    <div className="main-page">
+      {/* header */}
+      <div>
+        <h2>categories</h2>
+        <button onClick={handleOpen}>hi</button>
+      </div>
+      {/* content */}
+
+      <div className="content">
+        {categoryStore.categories.map((cate) => (
+          <Card name={cate.name} image={cate.image} />
         ))}
-      </ul>
+      </div>
+      {/* footer */}
+      <AddCategoryModal isOpen={isOpen} handleClose={handleClose} />
     </div>
   );
 };
+
+{
+  /* <div>
+<ul className="row">
+  {categoryStore.categories.map((category) => (
+    // <MemberItem key={member.id} member={member} />
+    <Link
+      key={category.id}
+      to={`/categorys/${category.slug}`}
+      className="col-lg-6 col-md-12"
+    >
+      <li className="card d-flex flex-row align-items-center">
+        <p className="fs-4 m-0 text-nowrap overflow-hidden">
+          {category.name}
+        </p>
+      </li>
+    </Link>
+  ))}
+</ul>
+</div> */
+}
 
 export default CategoryList;

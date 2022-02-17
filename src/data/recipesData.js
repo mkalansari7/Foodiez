@@ -1,4 +1,4 @@
-const categoriesData = [
+const recipesData = [
   {
     id: 1,
     name: "italian",
@@ -55,4 +55,4 @@ const categoriesData = [
   },
 ];
 
-export default categoriesData;
+export default recipesData;
