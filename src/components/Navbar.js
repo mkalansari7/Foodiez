@@ -36,7 +36,7 @@ const Navbar = () => {
         id="sideNav"
       >
         <div className="ali">
-          <a class="navbar-brand js-scroll-trigger" href="#page-top">
+          <a class="navbar-brand js-scroll-trigger" href="/">
             <span class="d-block d-lg-none" id="logois">
               Foodiez
             </span>

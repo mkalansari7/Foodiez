@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import categoryStore from "../stores/categoryStore";
 
 import recipeStore from "../stores/recipeStore";
 
@@ -7,6 +8,9 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
   const [newRecipe, setNewRecipe] = useState({
     name: "",
     image: "",
+    category: "",
+    ingredients: "",
+    description: "",
   });
 
   const handleChange = (e) =>
@@ -48,6 +52,42 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
               onChange={handleChange}
               required
             />
+          </Form.Group>
+          <Form.Group className="mt-2">
+            <Form.Label>Choose category</Form.Label>
+            <Form.Select name="category" onChange={handleChange}>
+              <option selected disabled>
+                Choose a category
+              </option>
+              {categoryStore.categories.map((category) => (
+                <option key={category.id} value={category.name}>
+                  {category.name}
+                </option>
+              ))}
+            </Form.Select>
+
+            <Form.Group className="mt-2">
+              <Form.Label>ingredients</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your ingredients"
+                name="ingredients"
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mt-2">
+              <Form.Label>description</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your description"
+                name="description"
+                onChange={handleChange}
+                required
+                as="textarea"
+                rows={3}
+              />
+            </Form.Group>
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
