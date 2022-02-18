@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
-// import { AiOutlineUser } from "react-icons/ai";
 import React, { useState } from "react";
 
 import categoryStore from "../stores/categoryStore";
 import Card from "./Card";
 import AddCategoryModal from "./AddCategoryModal";
+import { observer } from "mobx-react";
 
 const CategoryList = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,8 +15,8 @@ const CategoryList = () => {
     <div className="main-page">
       {/* header */}
       <div>
-        <h2>categories</h2>
-        <button onClick={handleOpen}>hi</button>
+        <h3>categories</h3>
+        <button onClick={handleOpen}>Add a new Category</button>
       </div>
       {/* content */}
 
@@ -53,4 +52,4 @@ const CategoryList = () => {
 </div> */
 }
 
-export default CategoryList;
+export default observer(CategoryList);

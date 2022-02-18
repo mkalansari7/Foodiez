@@ -7,6 +7,12 @@ class IngredientStore {
   constructor() {
     makeAutoObservable(this);
   }
+
+  addIngredient = (newIngredient) => {
+    newIngredient.id = this.ingredients[this.ingredients.length - 1].id + 1;
+
+    this.ingredients = [...this.ingredients, newIngredient];
+  };
 }
 
 const ingredientStore = new IngredientStore();

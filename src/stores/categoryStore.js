@@ -7,6 +7,12 @@ class CategoryStore {
   constructor() {
     makeAutoObservable(this);
   }
+
+  addCategory = (newCategory) => {
+    newCategory.id = this.categories[this.categories.length - 1].id + 1;
+
+    this.categories = [...this.categories, newCategory];
+  };
 }
 
 const categoryStore = new CategoryStore();

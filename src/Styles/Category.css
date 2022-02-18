@@ -32,6 +32,10 @@
   z-index: 99999;
 }
 
+.Modall {
+  z-index: 99999;
+}
+
 @media (max-width: 992px) {
   .content {
     width: 100%;

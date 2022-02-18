@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
-import categoryStore from "../stores/categoryStore";
+import recipeStore from "../stores/recipeStore";
 
-const AddCategoryModal = ({ isOpen, handleClose }) => {
-  const [newCategory, setNewCategory] = useState({
+const AddRecipeModal = ({ isOpen, handleClose }) => {
+  const [newRecipe, setNewRecipe] = useState({
     name: "",
     image: "",
   });
 
   const handleChange = (e) =>
-    setNewCategory({
-      ...newCategory,
+    setNewRecipe({
+      ...newRecipe,
       [e.target.name]: e.target.value,
     });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    categoryStore.addCategory(newCategory);
+    recipeStore.addRecipe(newRecipe);
     handleClose();
   };
 
@@ -25,14 +25,14 @@ const AddCategoryModal = ({ isOpen, handleClose }) => {
     <Modal className="Modall" show={isOpen} onHide={handleClose}>
       <Form onSubmit={handleSubmit}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Category</Modal.Title>
+          <Modal.Title>Add Recipe</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mt-2">
-            <Form.Label>Category Name</Form.Label>
+            <Form.Label>Recipe Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter category name"
+              placeholder="Enter recipe name"
               name="name"
               onChange={handleChange}
               required
@@ -54,8 +54,8 @@ const AddCategoryModal = ({ isOpen, handleClose }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button type="submit" variant="dark" onClick={handleClose}>
-            Add Category
+          <Button type="submit" variant="danger" onClick={handleClose}>
+            Add Recipe
           </Button>
         </Modal.Footer>
       </Form>
@@ -63,4 +63,4 @@ const AddCategoryModal = ({ isOpen, handleClose }) => {
   );
 };
 
-export default AddCategoryModal;
+export default AddRecipeModal;

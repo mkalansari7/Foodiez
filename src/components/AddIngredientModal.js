@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import ingredientStore from "../stores/ingredientStore";
 
-import categoryStore from "../stores/categoryStore";
-
-const AddCategoryModal = ({ isOpen, handleClose }) => {
-  const [newCategory, setNewCategory] = useState({
+const AddIngredientModal = ({ isOpen, handleClose }) => {
+  const [newIngredient, setNewIngredient] = useState({
     name: "",
     image: "",
   });
 
   const handleChange = (e) =>
-    setNewCategory({
-      ...newCategory,
+    setNewIngredient({
+      ...newIngredient,
       [e.target.name]: e.target.value,
     });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    categoryStore.addCategory(newCategory);
+    ingredientStore.addIngredient(newIngredient);
     handleClose();
   };
 
@@ -25,14 +24,14 @@ const AddCategoryModal = ({ isOpen, handleClose }) => {
     <Modal className="Modall" show={isOpen} onHide={handleClose}>
       <Form onSubmit={handleSubmit}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Category</Modal.Title>
+          <Modal.Title>Add Ingredient</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mt-2">
-            <Form.Label>Category Name</Form.Label>
+            <Form.Label>Ingredient Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter category name"
+              placeholder="Enter ingredient name"
               name="name"
               onChange={handleChange}
               required
@@ -54,8 +53,8 @@ const AddCategoryModal = ({ isOpen, handleClose }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button type="submit" variant="dark" onClick={handleClose}>
-            Add Category
+          <Button type="submit" variant="danger" onClick={handleClose}>
+            Add Ingredient
           </Button>
         </Modal.Footer>
       </Form>
@@ -63,4 +62,4 @@ const AddCategoryModal = ({ isOpen, handleClose }) => {
   );
 };
 
-export default AddCategoryModal;
+export default AddIngredientModal;
