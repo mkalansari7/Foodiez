@@ -5,6 +5,7 @@ import Card from "./Card";
 import AddCategoryModal from "./AddCategoryModal";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
+import "../Styles/Category.css";
 
 const CategoryList = () => {
   const [isOpen, setIsOpen] = useState(false);

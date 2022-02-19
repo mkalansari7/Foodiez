@@ -1,5 +1,6 @@
 import { observer } from "mobx-react";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import recipeStore from "../stores/recipeStore";
 import AddRecipeModal from "./AddRecipeModal";
 import Card from "./Card";
@@ -20,7 +21,9 @@ const RecipeList = () => {
       {/* content */}
       <div className="content">
         {recipeStore.recipes.map((recipe) => (
-          <Card name={recipe.name} image={recipe.image} />
+          <Link key={recipe._id} to={`/recipes/${recipe.slug}`}>
+            <Card name={recipe.name} image={recipe.image} />
+          </Link>
         ))}
       </div>
       {/* footer */}

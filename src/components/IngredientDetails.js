@@ -1,17 +1,20 @@
 import React from "react";
 import { useParams, Navigate } from "react-router-dom";
-import categoryStore from "../stores/categoryStore";
+import ingredientStore from "../stores/ingredientStore";
 import recipeStore from "../stores/recipeStore";
 
-const CategoryDetails = () => {
+const IngredientDetails = () => {
   const { slug } = useParams();
-  const category = categoryStore.categories.find((cate) => cate.slug === slug);
-  if (!category) {
+  const ingredient = ingredientStore.ingredients.find(
+    (ing) => ing.slug === slug
+  );
+  console.log(ingredient);
+  if (!ingredient) {
     return <Navigate to="/" />;
   }
   return (
     <div className="details">
-      <h2 className="page-title">{category.name}</h2>
+      <h2 className="page-title">{ingredient.name}</h2>
       <hr />
       <div className="">
         <div className=""></div>
@@ -19,7 +22,7 @@ const CategoryDetails = () => {
           <div className="details-borrowedBy card py-2 px-3 m-0">
             <h4 className="fw-normal fs-4">Recipies:</h4>
             <ul>
-              {category.recipes.map((currRec) =>
+              {ingredient.recipes.map((currRec) =>
                 recipeStore.recipes.map(
                   (recipe) =>
                     recipe.name === currRec.name && (
@@ -40,4 +43,4 @@ const CategoryDetails = () => {
   );
 };
 
-export default CategoryDetails;
+export default IngredientDetails;

@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 import ingredientStore from "../stores/ingredientStore";
 import Card from "./Card";
 import AddIngredientModal from "./AddIngredientModal";
+import { Link } from "react-router-dom";
 
 const IngredientList = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,9 @@ const IngredientList = () => {
 
       <div className="content">
         {ingredientStore.ingredients.map((ing) => (
-          <Card name={ing.name} image={ing.image} />
+          <Link key={ing._id} to={`/ingredients/${ing.slug}`}>
+            <Card name={ing.name} image={ing.image} />
+          </Link>
         ))}
       </div>
       {/* footer */}
