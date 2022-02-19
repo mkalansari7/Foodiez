@@ -4,6 +4,7 @@ import categoryStore from "../stores/categoryStore";
 import Card from "./Card";
 import AddCategoryModal from "./AddCategoryModal";
 import { observer } from "mobx-react";
+import { Link } from "react-router-dom";
 
 const CategoryList = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,9 @@ const CategoryList = () => {
 
       <div className="content">
         {categoryStore.categories.map((cate) => (
-          <Card name={cate.name} image={cate.image} />
+          <Link key={cate._id} to={`/categories/${cate.slug}`}>
+            <Card name={cate.name} image={cate.image} />
+          </Link>
         ))}
       </div>
       {/* footer */}

@@ -1,19 +1,37 @@
 import { makeAutoObservable } from "mobx";
-import ingredientsData from "../data/ingredientsData";
+import instance from "./instance";
 
 class IngredientStore {
-  ingredients = ingredientsData;
+  ingredients = [];
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  addIngredient = (newIngredient) => {
-    newIngredient.id = this.ingredients[this.ingredients.length - 1].id + 1;
+  getIngredients = async () => {
+    try {
+      const response = await instance.get("/ingredient");
+      this.ingredients = response.data;
+    } catch (error) {
+      console.log("IngredientStore -> getIngredients -> error", error);
+    }
+  };
 
-    this.ingredients = [...this.ingredients, newIngredient];
+  addIngredient = async (newIngredient) => {
+    try {
+      const formData = new FormData();
+      for (const key in newIngredient) formData.append(key, newIngredient[key]);
+      const response = await instance.post("/ingredient", formData);
+      this.ingredients.push(response.data);
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: IngredientStore.js ~ line 16 ~ IngredientStore ~ addIngredient= ~ error",
+        error
+      );
+    }
   };
 }
 
 const ingredientStore = new IngredientStore();
+ingredientStore.getIngredients();
 export default ingredientStore;

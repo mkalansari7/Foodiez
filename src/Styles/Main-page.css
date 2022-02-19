@@ -2,6 +2,7 @@
   height: 100vh;
   display: grid;
   grid-template-rows: 15% 75% 10%;
+
   /* grid-template-areas: ; */
 }
 
@@ -17,6 +18,11 @@
 .main-page button:hover {
   background-color: black;
   color: white;
+}
+
+a {
+  margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 992px) {

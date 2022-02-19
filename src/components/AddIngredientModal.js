@@ -14,6 +14,12 @@ const AddIngredientModal = ({ isOpen, handleClose }) => {
       [e.target.name]: e.target.value,
     });
 
+  const handleImage = (event) =>
+    setNewIngredient({
+      ...newIngredient,
+      [event.target.name]: event.target.files[0],
+    });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     ingredientStore.addIngredient(newIngredient);
@@ -41,10 +47,10 @@ const AddIngredientModal = ({ isOpen, handleClose }) => {
           <Form.Group className="mt-2">
             <Form.Label>Image</Form.Label>
             <Form.Control
-              type="text"
+              type="file"
               placeholder="Enter image link"
               name="image"
-              onChange={handleChange}
+              onChange={handleImage}
               required
             />
           </Form.Group>

@@ -13,15 +13,26 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
     description: "",
   });
 
+  const category = categoryStore.categories.find(
+    (cate) => cate.name === newRecipe.category
+  );
+
   const handleChange = (e) =>
     setNewRecipe({
       ...newRecipe,
       [e.target.name]: e.target.value,
     });
 
+  const handleImage = (event) =>
+    setNewRecipe({
+      ...newRecipe,
+      [event.target.name]: event.target.files[0],
+    });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    recipeStore.addRecipe(newRecipe);
+    recipeStore.addRecipe(newRecipe, category);
+    console.log(category);
     handleClose();
   };
 
@@ -46,10 +57,10 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
           <Form.Group className="mt-2">
             <Form.Label>Image</Form.Label>
             <Form.Control
-              type="text"
+              type="file"
               placeholder="Enter image link"
               name="image"
-              onChange={handleChange}
+              onChange={handleImage}
               required
             />
           </Form.Group>
@@ -60,7 +71,7 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
                 Choose a category
               </option>
               {categoryStore.categories.map((category) => (
-                <option key={category.id} value={category.name}>
+                <option key={category._id} value={category.name}>
                   {category.name}
                 </option>
               ))}
@@ -94,7 +105,7 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button type="submit" variant="danger" onClick={handleClose}>
+          <Button type="submit" variant="info" onClick={handleClose}>
             Add Recipe
           </Button>
         </Modal.Footer>
