@@ -9,13 +9,9 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
     name: "",
     image: "",
     category: "",
-    ingredients: "",
+    ing: "",
     description: "",
   });
-
-  const category = categoryStore.categories.find(
-    (cate) => cate.name === newRecipe.category
-  );
 
   const handleChange = (e) =>
     setNewRecipe({
@@ -31,8 +27,7 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    recipeStore.addRecipe(newRecipe, category);
-    console.log(category);
+    recipeStore.addRecipe(newRecipe, newRecipe.category);
     handleClose();
   };
 
@@ -71,7 +66,7 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
                 Choose a category
               </option>
               {categoryStore.categories.map((category) => (
-                <option key={category._id} value={category.name}>
+                <option key={category._id} value={category._id}>
                   {category.name}
                 </option>
               ))}
@@ -82,7 +77,7 @@ const AddRecipeModal = ({ isOpen, handleClose }) => {
               <Form.Control
                 type="text"
                 placeholder="Enter your ingredients"
-                name="ingredients"
+                name="ing"
                 onChange={handleChange}
                 required
               />
