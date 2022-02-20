@@ -6,12 +6,22 @@ import AddCategoryModal from "./AddCategoryModal";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import "../Styles/Category.css";
+import UpdateCategoryModal from "./UpdateCategoryModal";
+import DeleteCategoryModal from "./DeleteCategoryModal";
 
 const CategoryList = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isUpdateOpen, setIsUpdateOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const handleClose = () => setIsOpen(false);
   const handleOpen = () => setIsOpen(true);
+
+  const handleUpdateClose = () => setIsUpdateOpen(false);
+  const handleUpdateOpen = () => setIsUpdateOpen(true);
+
+  const handleDeleteClose = () => setIsDeleteOpen(false);
+  const handleDeleteOpen = () => setIsDeleteOpen(true);
 
   return (
     <div className="main-page">
@@ -19,6 +29,8 @@ const CategoryList = () => {
       <div>
         <h3>categories</h3>
         <button onClick={handleOpen}>Add a new Category</button>
+        <button onClick={handleUpdateOpen}>Update a Category</button>
+        <button onClick={handleDeleteOpen}>Delete a Category</button>
       </div>
       {/* content */}
 
@@ -31,6 +43,14 @@ const CategoryList = () => {
       </div>
       {/* footer */}
       <AddCategoryModal isOpen={isOpen} handleClose={handleClose} />
+      <UpdateCategoryModal
+        isUpdateOpen={isUpdateOpen}
+        handleUpdateClose={handleUpdateClose}
+      />
+      <DeleteCategoryModal
+        isDeleteOpen={isDeleteOpen}
+        handleDeleteClose={handleDeleteClose}
+      />
     </div>
   );
 };

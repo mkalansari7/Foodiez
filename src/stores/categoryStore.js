@@ -30,6 +30,35 @@ class CategoryStore {
       );
     }
   };
+
+  updateCategory = async (updatedCategory, id) => {
+    try {
+      const formData = new FormData();
+      for (const key in updatedCategory)
+        formData.append(key, updatedCategory[key]);
+      const response = await instance.put(`/category/${id}`, formData);
+      this.categories = this.categories.map((ing) =>
+        ing._id === id ? response.data : ing
+      );
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: CategoryStore.js ~ line 16 ~ CategoryStore ~ addCategory= ~ error",
+        error
+      );
+    }
+  };
+
+  deleteCategory = async (id) => {
+    try {
+      await instance.delete(`/category/${id}`);
+      this.categories = this.categories.filter((ing) => ing._id !== id);
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: CategoryStore.js ~ line 16 ~ CategoryStore ~ addCategory= ~ error",
+        error
+      );
+    }
+  };
 }
 
 const categoryStore = new CategoryStore();

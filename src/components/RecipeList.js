@@ -4,19 +4,29 @@ import { Link } from "react-router-dom";
 import recipeStore from "../stores/recipeStore";
 import AddRecipeModal from "./AddRecipeModal";
 import Card from "./Card";
+import UpdateRecipeModal from "./UpdateRecipeModal";
 
 const RecipeList = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isUpdateOpen, setIsUpdateOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const handleClose = () => setIsOpen(false);
   const handleOpen = () => setIsOpen(true);
 
+  const handleUpdateClose = () => setIsUpdateOpen(false);
+  const handleUpdateOpen = () => setIsUpdateOpen(true);
+
+  const handleDeleteClose = () => setIsDeleteOpen(false);
+  const handleDeleteOpen = () => setIsDeleteOpen(true);
   return (
     <div className="main-page">
       {/* header */}
       <div>
         <h3>recipes</h3>
         <button onClick={handleOpen}>Add a new Recipe</button>
+        <button onClick={handleUpdateOpen}>Update a recipe</button>
+        <button onClick={handleDeleteOpen}>Delete a recipe</button>
       </div>
       {/* content */}
       <div className="content">
@@ -28,6 +38,10 @@ const RecipeList = () => {
       </div>
       {/* footer */}
       <AddRecipeModal isOpen={isOpen} handleClose={handleClose} />;
+      <UpdateRecipeModal
+        isUpdateOpen={isUpdateOpen}
+        handleUpdateClose={handleUpdateClose}
+      />
     </div>
   );
 };

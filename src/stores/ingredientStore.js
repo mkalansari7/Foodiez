@@ -30,6 +30,35 @@ class IngredientStore {
       );
     }
   };
+
+  updateIngredient = async (updatedIngredient, id) => {
+    try {
+      const formData = new FormData();
+      for (const key in updatedIngredient)
+        formData.append(key, updatedIngredient[key]);
+      const response = await instance.put(`/ingredient/${id}`, formData);
+      this.ingredients = this.ingredients.map((ing) =>
+        ing._id === id ? response.data : ing
+      );
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: IngredientStore.js ~ line 16 ~ IngredientStore ~ updateIngredient= ~ error",
+        error
+      );
+    }
+  };
+
+  deleteIngredient = async (id) => {
+    try {
+      await instance.delete(`/ingredient/${id}`);
+      this.ingredients = this.ingredients.filter((ing) => ing._id !== id);
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: IngredientStore.js ~ line 16 ~ IngredientStore ~ addIngredient= ~ error",
+        error
+      );
+    }
+  };
 }
 
 const ingredientStore = new IngredientStore();

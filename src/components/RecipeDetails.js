@@ -6,7 +6,10 @@ import recipeStore from "../stores/recipeStore";
 
 const RecipeDetails = () => {
   const { slug } = useParams();
+  console.log(slug);
+
   const recipe = recipeStore.recipes.find((recipe) => recipe.slug === slug);
+  console.log(recipe);
   if (!recipe) return <Navigate to="/" />;
 
   return (

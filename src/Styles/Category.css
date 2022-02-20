@@ -10,6 +10,8 @@
 }
 .myCard {
   position: relative;
+  width: 275px;
+  height: 275px;
 }
 .myCard img {
   width: 100%;
