@@ -44,6 +44,16 @@ const UpdateRecipeModal = ({ isUpdateOpen, handleUpdateClose }) => {
           <Modal.Title>Add Recipe</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <Form.Select name="id" onChange={handleChange}>
+            <option selected disabled>
+              Choose an Recipe
+            </option>
+            {recipeStore.recipes.map((rec) => (
+              <option key={rec._id} value={rec._id}>
+                {rec.name}
+              </option>
+            ))}
+          </Form.Select>
           <Form.Group className="mt-2">
             <Form.Label>Recipe Name</Form.Label>
             <Form.Control

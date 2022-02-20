@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import recipeStore from "../stores/recipeStore";
 import AddRecipeModal from "./AddRecipeModal";
 import Card from "./Card";
+import DeleteRecipeModal from "./DeleteRecipeModal";
 import UpdateRecipeModal from "./UpdateRecipeModal";
 
 const RecipeList = () => {
@@ -41,6 +42,10 @@ const RecipeList = () => {
       <UpdateRecipeModal
         isUpdateOpen={isUpdateOpen}
         handleUpdateClose={handleUpdateClose}
+      />
+      <DeleteRecipeModal
+        isDeleteOpen={isDeleteOpen}
+        handleDeleteClose={handleDeleteClose}
       />
     </div>
   );
