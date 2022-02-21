@@ -33,7 +33,12 @@ const UpdateRecipeModal = ({ isUpdateOpen, handleUpdateClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    recipeStore.updateRecipe(updatedRecipe, chosenRecipe.id);
+    console.log(updatedRecipe.category);
+    recipeStore.updateRecipe(
+      updatedRecipe,
+      chosenRecipe.id,
+      updatedRecipe.category
+    );
     handleUpdateClose();
   };
 

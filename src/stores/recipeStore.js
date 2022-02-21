@@ -35,14 +35,15 @@ class RecipeStore {
     }
   };
 
-  updateRecipe = async (updatedRecipe, id) => {
+  updateRecipe = async (updatedRecipe, recipeId, categoryId) => {
     try {
       const formData = new FormData();
       for (const key in updatedRecipe) formData.append(key, updatedRecipe[key]);
-      const response = await instance.put(`/recipe/${id}`, formData);
-      this.recipes = this.recipes.map((rec) =>
-        rec._id === id ? response.data : rec
+      const response = await instance.put(
+        `/category/${categoryId}/${recipeId}`,
+        formData
       );
+      this.getRecipes();
     } catch (error) {
       console.log(
         "🚀 ~ file: RecipeStore.js ~ line 16 ~ RecipeStore ~ updateRecipe ~ error",
