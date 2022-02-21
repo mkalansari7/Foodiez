@@ -1,28 +1,32 @@
 import React from "react";
-import Card from "./Card";
+
 import "../Styles/Category.css";
+import { Link, Route } from "react-router-dom";
+import FirstQuestion from "./FirstQuestion";
+import Card from "./Card";
+import recipeStore from "../stores/recipeStore";
 const Home = () => {
   return (
     <div className="main-page">
       {/* header */}
-      <h2>What is your favorite cuiines?</h2>
+      <div>
+        <h3>Home</h3>
+      </div>
       {/* content */}
       <div className="content">
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
-        <Card name="hgg" image="./assets/img/logo.jpg" />
+        <Link to={"/categories"}>
+          <Card
+            name="Categories"
+            image="http://localhost:8000/media/1645451334043foodiz%20logo%20(2).jpg"
+          />
+        </Link>
+        <Link to={"/recipes"}>
+          <Card name="Recipes" />
+        </Link>
+        <Link to={"/ingredients"}>
+          <Card name="Ingredients" />
+        </Link>
       </div>
-      {/* footer */}
     </div>
   );
 };

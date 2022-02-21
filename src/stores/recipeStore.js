@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import categoryStore from "./categoryStore";
 import ingredientStore from "./ingredientStore";
 import instance from "./instance";
 
@@ -29,7 +30,8 @@ class RecipeStore {
         .forEach(async (i) => {
           dataOfRec.push({
             name: i,
-            image: "http://localhost:8000/media/1645389851933IMG_0272.jpg",
+            image:
+              "http://localhost:8000/media/1645442876440update-stamp-with-word-update-inside-vector-illustration-eps-vector_csp17122744%20(3).jpg",
           });
 
           const foundIng = ingredientStore.ingredients.find(
@@ -38,7 +40,8 @@ class RecipeStore {
           if (!foundIng) {
             const ig = ingredientStore.addIngredient({
               name: i,
-              image: "http://localhost:8000/media/1645389851933IMG_0272.jpg",
+              image:
+                "http://localhost:8000/media/1645442876440update-stamp-with-word-update-inside-vector-illustration-eps-vector_csp17122744%20(3).jpg",
             });
           } else {
           }
@@ -56,7 +59,9 @@ class RecipeStore {
         dataOfRec
       );
       response.data.ingredients = [...dataOfRec];
-
+      response.data.category = categoryStore.categories.find(
+        (cate) => cate._id === categoryId
+      );
       this.recipes.push(response.data);
     } catch (error) {
       console.log(

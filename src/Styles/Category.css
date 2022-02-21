@@ -34,6 +34,11 @@
   z-index: 99999;
 }
 
+.homeB {
+  text-align: center;
+  margin-top: 10px;
+}
+
 .Modall {
   z-index: 99999;
 }

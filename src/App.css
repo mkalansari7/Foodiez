@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background-color: #fce6c4;
+  height: 100vh;
+}
+.nav-item a {
+  cursor: pointer;
+}
+body {
 }
 
 .App-logo {
