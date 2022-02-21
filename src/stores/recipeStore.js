@@ -73,13 +73,46 @@ class RecipeStore {
 
   updateRecipe = async (updatedRecipe, recipeId, categoryId) => {
     try {
+      let dataOfRec = [];
+
       const formData = new FormData();
       for (const key in updatedRecipe) formData.append(key, updatedRecipe[key]);
+
+      updatedRecipe.ing
+        .trim()
+        .split(",")
+        .forEach(async (i) => {
+          console.log(i);
+          dataOfRec.push({
+            name: i,
+            image:
+              "http://localhost:8000/media/1645442876440update-stamp-with-word-update-inside-vector-illustration-eps-vector_csp17122744%20(3).jpg",
+          });
+
+          const foundIng = ingredientStore.ingredients.find(
+            (ingre) => ingre.name === i
+          );
+          if (!foundIng) {
+            const ig = await ingredientStore.addIngredient({
+              name: i.trim(),
+              image:
+                "http://localhost:8000/media/1645442876440update-stamp-with-word-update-inside-vector-illustration-eps-vector_csp17122744%20(3).jpg",
+            });
+          }
+        });
+
       const response = await instance.put(
         `/category/${categoryId}/${recipeId}`,
         formData
       );
-      this.getRecipes();
+
+      response.data.ingredients = [...dataOfRec];
+      response.data.category = categoryStore.categories.find(
+        (cate) => cate._id === categoryId
+      );
+      this.recipes = this.recipes.map((rec) =>
+        rec._id === recipeId ? response.data : rec
+      );
     } catch (error) {
       console.log(
         "🚀 ~ file: RecipeStore.js ~ line 16 ~ RecipeStore ~ updateRecipe ~ error",

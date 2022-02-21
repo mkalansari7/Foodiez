@@ -10,7 +10,7 @@ const Home = () => {
     <div className="main-page">
       {/* header */}
       <div>
-        <h3>Home</h3>
+        <h1>Home</h1>
       </div>
       {/* content */}
       <div className="content">
@@ -21,10 +21,16 @@ const Home = () => {
           />
         </Link>
         <Link to={"/recipes"}>
-          <Card name="Recipes" />
+          <Card
+            name="Recipes"
+            image="http://localhost:8000/media/1645451334043foodiz%20logo%20(2).jpg"
+          />
         </Link>
         <Link to={"/ingredients"}>
-          <Card name="Ingredients" />
+          <Card
+            name="Ingredients"
+            image="http://localhost:8000/media/1645451334043foodiz%20logo%20(2).jpg"
+          />
         </Link>
       </div>
     </div>
