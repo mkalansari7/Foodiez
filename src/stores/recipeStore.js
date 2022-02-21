@@ -28,6 +28,7 @@ class RecipeStore {
         .trim()
         .split(",")
         .forEach(async (i) => {
+          console.log(i);
           dataOfRec.push({
             name: i,
             image:
@@ -38,12 +39,11 @@ class RecipeStore {
             (ingre) => ingre.name === i
           );
           if (!foundIng) {
-            const ig = ingredientStore.addIngredient({
-              name: i,
+            const ig = await ingredientStore.addIngredient({
+              name: i.trim(),
               image:
                 "http://localhost:8000/media/1645442876440update-stamp-with-word-update-inside-vector-illustration-eps-vector_csp17122744%20(3).jpg",
             });
-          } else {
           }
         });
       const response = await instance.post(
